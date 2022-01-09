@@ -1,0 +1,51 @@
+{
+    "name": "server",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+        "type-check": "tsc --noEmit",
+        "type-check:watch": "yarn type-check -- --watch",
+        "build": "yarn build:types && yarn build:js",
+        "build:types": "tsc --emitDeclarationOnly",
+        "build:js": "babel src --out-dir dist --extensions \".ts\"",
+        "clean": "rm -rf ./node_modules/.cache/babel-loader",
+        "dev": "nodemon --ext \"ts,json,gql\" --exec yarn restart",
+        "dev:start": "babel-node ./src/index.ts --extensions .ts",
+        "restart": "yarn clean && yarn dev:start"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.16.7",
+        "@babel/core": "^7.16.7",
+        "@babel/node": "^7.16.7",
+        "@babel/plugin-proposal-class-properties": "^7.16.7",
+        "@babel/plugin-transform-runtime": "^7.16.7",
+        "@babel/preset-env": "^7.16.7",
+        "@babel/preset-typescript": "^7.16.7",
+        "@typescript-eslint/parser": "^5.9.0",
+        "add": "^2.0.6",
+        "babel-loader": "^8.2.3",
+        "babel-plugin-import-graphql": "^2.8.1",
+        "eslint": "^8.6.0",
+        "eslint-config-airbnb": "^19.0.4",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-prettier": "^4.0.0",
+        "node-polyfill-webpack-plugin": "^1.1.4",
+        "nodemon": "^2.0.15",
+        "prettier": "^2.5.1",
+        "typescript": "^4.5.4",
+        "webpack": "^5.65.0",
+        "webpack-cli": "^4.9.1",
+        "yarn": "^1.22.17"
+    },
+    "dependencies": {
+        "@babel/runtime": "^7.16.7",
+        "@types/express": "^4.17.13",
+        "@types/node": "^17.0.8",
+        "@typescript-eslint/eslint-plugin": "^5.9.0",
+        "apollo-server-core": "^3.6.1",
+        "apollo-server-express": "^3.6.1",
+        "express": "^4.17.2",
+        "graphql": "^16.2.0"
+    }
+}
